@@ -28,6 +28,7 @@ jobs:
         env:
           DOUBAO_API_KEY: ${{ secrets.DOUBAO_API_KEY }}
           DOUBAO_ENDPOINT_ID: ${{ secrets.DOUBAO_ENDPOINT_ID }}
+          PUSHPLUS_TOKEN: ${{ secrets.PUSHPLUS_TOKEN }}  # 🌟 加上这关键的一行！
         run: python monitor_papers.py
 
       - name: 自动提交更新
