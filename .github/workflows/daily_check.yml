@@ -5,14 +5,13 @@ on:
     - cron: '0 0 * * *'
   workflow_dispatch: 
 
+# 🌟 就是这一行保平安！强制要求所有插件使用 Node.js 24 运行
+env:
+  FORCE_JAVASCRIPT_ACTIONS_TO_NODE24: true
+
 jobs:
   build:
     runs-on: ubuntu-latest
-    
-    # 🌟 关键：在这里添加全局环境变量，强制开启 Node.js 24 模式
-    env:
-      FORCE_JAVASCRIPT_ACTIONS_TO_NODE24: true
-
     steps:
       - name: 检出代码
         uses: actions/checkout@v4
