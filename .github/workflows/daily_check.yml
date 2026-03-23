@@ -2,20 +2,20 @@ name: Daily Paper Monitor
 
 on:
   schedule:
-    - cron: '0 0 * * *' # 每天北京时间早上 8 点运行
-  workflow_dispatch: # 允许你手动点击运行
+    - cron: '0 0 * * *'
+  workflow_dispatch: 
 
 jobs:
   build:
     runs-on: ubuntu-latest
     steps:
       - name: 检出代码
-        uses: actions/checkout@v3
+        uses: actions/checkout@v4  # 已更新
 
       - name: 安装 Python
-        uses: actions/setup-python@v4
+        uses: actions/setup-python@v5  # 已更新
         with:
-          python-version: '3.9'
+          python-version: '3.10'
 
       - name: 安装依赖
         run: pip install feedparser
