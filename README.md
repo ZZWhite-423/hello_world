@@ -1,4 +1,4 @@
-# 基于磁性纳米材料的 $PDA@CuFe_2O_4-Ag$ 合成与表征项目
+# 基于磁性纳米材料的 $$PDA@CuFe_2O_4-Ag$$ 合成与表征项目
 # Synthesis and Characterization of $PDA@CuFe_2O_4-Ag$ Magnetic Nanomaterials
 
 [![Python Version](https://img.shields.io/badge/python-3.9+-blue.svg)](https://www.python.org/)
