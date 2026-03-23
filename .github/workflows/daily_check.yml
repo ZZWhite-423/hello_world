@@ -1,0 +1,32 @@
+name: Daily Paper Monitor
+
+on:
+  schedule:
+    - cron: '0 0 * * *' # 每天北京时间早上 8 点运行
+  workflow_dispatch: # 允许你手动点击运行
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+    steps:
+      - name: 检出代码
+        uses: actions/checkout@v3
+
+      - name: 安装 Python
+        uses: actions/setup-python@v4
+        with:
+          python-version: '3.9'
+
+      - name: 安装依赖
+        run: pip install feedparser
+
+      - name: 运行监控脚本
+        run: python monitor_papers.py
+
+      - name: 自动提交更新
+        run: |
+          git config --global user.name "PaperBot"
+          git config --global user.email "bot@github.com"
+          git add Latest_Papers.md
+          git commit -m "自动更新比色检测最新论文" || exit 0
+          git push
