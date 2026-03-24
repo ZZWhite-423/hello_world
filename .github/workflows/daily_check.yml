@@ -30,11 +30,12 @@ jobs:
           DOUBAO_ENDPOINT_ID: ${{ secrets.DOUBAO_ENDPOINT_ID }}
           PUSHPLUS_TOKEN: ${{ secrets.PUSHPLUS_TOKEN }}  # 🌟 加上这关键的一行！
         run: python monitor_papers.py
-
-      - name: 自动提交更新
+     
+      - name: 提交更新的记忆文件
         run: |
-          git config --global user.name "PaperBot"
-          git config --global user.email "bot@github.com"
-          git add Latest_Papers.md
-          git commit -m "自动更新比色检测最新论文" || exit 0
+          git config --local user.email "action@github.com"
+          git config --local user.name "GitHub Action"
+          git add history.txt Latest_Papers.md
+          # 如果有更新就提交，没有更新就不管
+          git commit -m "🤖 自动更新：记录已读文献" || echo "No changes to commit"
           git push
